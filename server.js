@@ -5,6 +5,8 @@ const app = express();
 const path = require('path');
 app.use(cors());
 const connectToDatabase = require('./db');
+
+const product = require('./routes/products');
 const authModel = require('./models/userModel'); // import authModel
 const productModel = require('./models/productModel');
 
@@ -25,20 +27,12 @@ app.get('/', async (req, res) => {
         });
   });
 
-  app.post('/', async (req, res) => {
-    try {
-      const query = {userName: req.body.userName};
-      const data = await authModel.find(query);
-      res.send({category: data});
-    } catch (error) {
-      console.log(error);
-    }
-  });
+
 
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use('/product', product);
 connectToDatabase(); // connect to database
 
 app.listen(port, () => {

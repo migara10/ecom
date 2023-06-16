@@ -28,9 +28,10 @@ app.get('/', async (req, res) => {
   });
 
 
-
+  app.use('/upload', express.static('upload')); // get images in the server
 
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use('/product', product);
 connectToDatabase(); // connect to database

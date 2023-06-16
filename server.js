@@ -4,9 +4,13 @@ const bodyParser = require('body-parser'); // import bodyParser
 const app = express();
 const path = require('path');
 app.use(cors());
+
 const connectToDatabase = require('./db');
+
 const authModel = require('./models/userModel'); // import authModel
 const productModel = require('./models/productModel');
+
+const auth = require('./routes/auth')
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -35,7 +39,11 @@ app.get('/', async (req, res) => {
     }
   });
 
-
+  /* app.use('/product', product);
+  app.use('/item', item);
+  app.use('/order', order); */
+  app.use('/auth', auth);
+  app.use('/upload', express.static('upload')); // get images in the server
 app.use(express.static(path.join(__dirname, 'public')));
 
 

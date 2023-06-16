@@ -39,10 +39,7 @@ app.get('/', async (req, res) => {
     }
   });
 
-  /* app.use('/product', product);
-  app.use('/item', item);
-  app.use('/order', order); */
-  app.use('/auth', auth);
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 

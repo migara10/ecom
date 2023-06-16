@@ -4,13 +4,9 @@ const bodyParser = require('body-parser'); // import bodyParser
 const app = express();
 const path = require('path');
 app.use(cors());
-
 const connectToDatabase = require('./db');
-
 const authModel = require('./models/userModel'); // import authModel
 const productModel = require('./models/productModel');
-
-const auth = require('./routes/auth')
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());

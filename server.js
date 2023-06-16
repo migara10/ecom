@@ -25,6 +25,16 @@ app.get('/', async (req, res) => {
         });
   });
 
+  app.post('/', async (req, res) => {
+    try {
+      const query = {userName: req.body.userName};
+      const data = await authModel.find(query);
+      res.send({category: data});
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
